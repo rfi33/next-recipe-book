@@ -1,28 +1,22 @@
 'use client'
 
-import { useState } from 'react'
 import styles from './RecipeCard.module.css'
 
-export default function RecipeCard({ recipe }) {
-  const [pinned, setPinned] = useState(false)
-
+export default function RecipeCard({ recipe, isFav, onToggleFav }) {
   return (
-    <article className={`${styles.card} ${pinned ? styles.pinned : ''}`}>
-      <img
-        className={styles.image}
-        src={recipe.image}
-        alt=""
-      />
+    <article className={`${styles.card} ${isFav ? styles.fav : ''}`}>
+      <img className={styles.image} src={recipe.image} alt="" />
       <div className={styles.body}>
         <h2 className={styles.name}>{recipe.name}</h2>
         <span className={styles.badge}>{recipe.category}</span>
         <p className={styles.duration}>{recipe.duration} min</p>
         <button
           type="button"
-          className={styles.pin}
-          onClick={() => setPinned((p) => !p)}
+          className={styles.heart}
+          onClick={() => onToggleFav(recipe.id)}
+          aria-label={isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}
         >
-          {pinned ? 'Unpin' : 'Pin'}
+          {isFav ? '❤️' : '🤍'}
         </button>
       </div>
     </article>
