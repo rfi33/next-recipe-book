@@ -1,0 +1,12 @@
+.searchTerm {
+  border: 2px solid #e2ddd4;
+  border-radius: 10px;
+  width: 50%;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  padding-left: 1em;
+  padding-block: 1rem;
+  margin-inline: auto;
+  margin-block: 1rem;
+}
